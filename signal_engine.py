@@ -15,11 +15,11 @@ def compute_rsi(series, window=14):
     return rsi
 
 def analyze_stock(ticker: str, capital: float):
-
+    
     data = yf.download(ticker, period="2y", interval="1d", progress=False)
 
     if data.empty:
-        return {"error": "Invalid ticker or no data found."}
+    return {"error": f"No data found for ticker {ticker}"}
 
     data["MA50"] = data["Close"].rolling(50).mean()
     data["MA200"] = data["Close"].rolling(200).mean()
