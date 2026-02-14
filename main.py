@@ -12,4 +12,8 @@ def analyze(
     ticker: str = Query(..., description="LSE ticker e.g. BP.L"),
     capital: float = Query(..., description="Capital in GBP")
 ):
-    return analyze_stock(ticker, capital)
+    try:
+        result = analyze_stock(ticker, float(capital))
+        return result
+    except Exception as e:
+        return {"error": "Internal Server Error", "details": str(e)}
