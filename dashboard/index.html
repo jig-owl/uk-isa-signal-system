@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UK ISA Signal Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input, button { padding: 8px; margin: 5px; }
+        .card { margin-top: 20px; padding: 15px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+<h1>UK ISA Signal Dashboard</h1>
+
+Ticker:
+<input type="text" id="ticker" value="BP.L">
+
+Capital (£):
+<input type="number" id="capital" value="500">
+
+<button onclick="analyze()">Analyze</button>
+
+<div class="card" id="result"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
