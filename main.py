@@ -1,32 +1,24 @@
+# main.py
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from signal_engine import analyze_stock
 
-app = FastAPI()
+app = FastAPI(title="UK ISA Signal Engine")
 
-# Enable CORS so static dashboard can call API
+# Allow your frontend to fetch data
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=["*"],  # replace with your frontend URL for security
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 @app.get("/")
-def root():
+def home():
     return {"message": "UK ISA Signal Engine is running"}
 
 @app.get("/analyze")
-def analyze(
-    ticker: str = Query(..., description="Stock ticker e.g. BP.L"),
-    capital: float = Query(..., description="Capital amount")
-):
-    try:
-        result = analyze_stock(ticker, capital)
-        return result
-    except Exception as e:
-        return {
-            "error": "Internal Server Error",
-            "details": str(e)
-        }
+def analyze(ticker: str = Query(...), capital: float = Query(...)):
+    """Analyze stock and return trading signal"""
+    result = analyze_stock(ticker.upper(), capital)
+    return result
