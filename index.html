@@ -18,18 +18,32 @@
         <h1>UK ISA Signal Dashboard</h1>
 
         <div class="form-group">
-            <label for="ticker">Ticker (e.g., BP.L, HSBA.L)</label>
+            <label for="ticker">Ticker (e.g., BP.L, HSBA.L, CRM)</label>
             <input type="text" id="ticker" placeholder="Enter ticker">
         </div>
 
         <div class="form-group">
-            <label for="capital">Capital (£)</label>
+            <label for="capital">Capital (£ or $)</label>
             <input type="number" id="capital" placeholder="Enter capital" value="500">
         </div>
 
         <button id="analyze-btn">Analyze</button>
 
         <div id="result" class="result"></div>
+
+        <!-- Legend / explanation -->
+        <div class="legend">
+            <h3>Metrics Explanation:</h3>
+            <ul>
+                <li><strong>Signal:</strong> BUY = upward momentum, SELL = downward, HOLD = neutral</li>
+                <li><strong>Trend:</strong> Bullish = uptrend, Bearish = downtrend</li>
+                <li><strong>RSI:</strong> Relative Strength Index (0–100); below 30 = oversold, above 70 = overbought</li>
+                <li><strong>Price:</strong> Current market price in stock's currency</li>
+                <li><strong>Position Size:</strong> Suggested trade size based on your capital</li>
+                <li><strong>Risk per Trade:</strong> Maximum loss you are willing to take</li>
+                <li><strong>Stop Price:</strong> Price to exit if trade goes against you</li>
+            </ul>
+        </div>
 
     </div>
 
