@@ -17,16 +17,19 @@ document.getElementById("analyze-btn").addEventListener("click", async () => {
         if (data.error) {
             resultDiv.innerHTML = `<span style="color:red">${data.error}</span>`;
         } else {
+            const trendClass = data.trend.toLowerCase() === "bullish" ? "bullish" : "bearish";
+            const rsiClass = data.rsi < 30 ? "rsi-low" : data.rsi > 70 ? "rsi-high" : "";
+
             resultDiv.innerHTML = `
                 <strong>Ticker:</strong> ${data.ticker}<br>
                 <strong>Signal:</strong> ${data.signal}<br>
                 <strong>Reason:</strong> ${data.reason}<br>
-                <strong>Price:</strong> £${data.price}<br>
-                <strong>Trend:</strong> ${data.trend}<br>
-                <strong>RSI:</strong> ${data.rsi}<br>
-                <strong>Position Size:</strong> £${data.position_size}<br>
-                <strong>Risk per Trade:</strong> £${data.risk_per_trade}<br>
-                <strong>Stop Price:</strong> £${data.stop_price}<br>
+                <strong>Price:</strong> ${data.price}<br>
+                <strong>Trend:</strong> <span class="${trendClass}">${data.trend}</span><br>
+                <strong>RSI:</strong> <span class="${rsiClass}">${data.rsi}</span><br>
+                <strong>Position Size:</strong> ${data.position_size}<br>
+                <strong>Risk per Trade:</strong> ${data.risk_per_trade}<br>
+                <strong>Stop Price:</strong> ${data.stop_price}<br>
             `;
         }
     } catch (err) {
