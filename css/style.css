@@ -98,3 +98,16 @@ button:hover {
     font-size: 14px;
     line-height: 1.6;
 }
+
+/* Trend colors */
+.bullish { color: green; font-weight: bold; }
+.bearish { color: red; font-weight: bold; }
+
+/* RSI colors */
+.rsi-low { color: green; }
+.rsi-high { color: red; }
+
+/* Risk per trade colors */
+.risk-low { color: green; }
+.risk-medium { color: orange; }
+.risk-high { color: red; }
